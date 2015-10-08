@@ -57,8 +57,15 @@
                     </view>
                     <navigationItem key="navigationItem" title="Timeline" id="WbP-p4-Che">
                         <barButtonItem key="leftBarButtonItem" systemItem="refresh" id="H9B-7A-cKx"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="TFp-QI-sy6"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="TFp-QI-sy6">
+                            <connections>
+                                <action selector="tweet:" destination="vXZ-lx-hvc" id="dBE-Fw-mwe"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="timelineTableView" destination="6RF-Ey-Mt9" id="w6S-zX-PNz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>

@@ -21,7 +21,11 @@ class ViewController: UIViewController {
         print(tweetPostVC)
         self.presentViewController(tweetPostVC!, animated: true, completion: nil)
     }
-    
+
+    @IBAction func reload(sender: AnyObject) {
+        getTimeline()
+    }
+
     /* timeline 取得 */
     func getTimeline() {
         
@@ -40,11 +44,10 @@ class ViewController: UIViewController {
                 if accounts!.count > 0 {
                     let twitterAccount:ACAccount = accounts!.lastObject as! ACAccount
                     let requestAPI:NSURL! = NSURL(string: "https://api.twitter.com/1.1/statuses/home_timeline.json")
+                    // memo: enumについて詳しく調べる
                     let requestMethod: SLRequestMethod = .GET
-                    let SLServiceTypeTwitter: String
                     
-                    // ここの部分調べる
-                    let params:[NSObject : AnyObject]!
+                    var params:[NSObject : AnyObject]!
                     params["count"] = "100"
                     params["include_entities"] = "1"
                     
@@ -54,40 +57,36 @@ class ViewController: UIViewController {
                     
                     UIApplication.sharedApplication().networkActivityIndicatorVisible = true
                     
-                    let pHandler:SLRequestHandler? = {
-                        (response,urlResponse,error) in
-                        let err: NSError?
-                        if let jsonArray = NSJSONSerialization.JSONObjectWithData(response, options: NSJSONReadingOptions.MutableLeaves) as? NSArray {
+                    // json解析部分
+                    // memo: エラーハンドリングの仕方が変わったっぽい？書き方の問題？
+                    let pHandler:SLRequestHandler = { (response, urlResponse, error) in
+                        do {
+                            let jsonArray = try NSJSONSerialization.JSONObjectWithData(response, options: NSJSONReadingOptions.MutableLeaves) as? NSArray
                             self.array = jsonArray
                             
                             if self.array!.count != 0 {
                                 dispatch_async(dispatch_get_main_queue(), {self.timelineTableView!.reloadData()})
                             }
-                            
-                            
-                            
-                        } else {
+                        } catch let err as NSError? {
                             print(err!.localizedDescription)
-                            
                         }
                     }
                     posts!.performRequestWithHandler(pHandler)
                     UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-                }else{
+                } else {
                     print(error.localizedDescription)
                 }
             }
         }
         account!.requestAccessToAccountsWithType(accountType, options: nil, completion: handler)
-
     }
 
     override func viewDidLoad() {
-        print("hello")
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        getTimeline()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

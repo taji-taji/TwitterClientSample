@@ -10,10 +10,10 @@ import UIKit
 import Accounts
 import Social
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var array:NSArray? = NSArray()
-    @IBOutlet var timelineTableView:UITableView? = UITableView()
+    @IBOutlet weak var timelineTableView: UITableView!
     
     /* tweet */
     @IBAction func tweet(sender: AnyObject) {
@@ -47,11 +47,15 @@ class ViewController: UIViewController {
                     // memo: enumについて詳しく調べる
                     let requestMethod: SLRequestMethod = .GET
                     
-                    var params:[NSObject : AnyObject]!
+                    
+                    // 引っかかり→ディクショナリの宣言
+                    var params:[NSObject : AnyObject]! = [:]
+                    
                     params["count"] = "100"
                     params["include_entities"] = "1"
                     
                     let posts:SLRequest? = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: requestMethod, URL: requestAPI, parameters: params)
+                    
                     
                     posts!.account = twitterAccount
                     
@@ -80,11 +84,59 @@ class ViewController: UIViewController {
         }
         account!.requestAccessToAccountsWithType(accountType, options: nil, completion: handler)
     }
+    
+    // セクション数の追加
+    // memo: ここ調べる
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    // 行数を指定
+    // memo: ここ調べる
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return array!.count
+    }
+    
+    // セルの中身を実装
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let CellIdentifier = "Cell"
+        let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier) as UITableViewCell!
+        print(cell)
+        let userLabel:UILabel = cell.viewWithTag(1) as! UILabel
+        let userIDLabel:UILabel = cell.viewWithTag(2) as! UILabel
+        let tweetTextView:UITextView = cell.viewWithTag(3) as! UITextView
+        let userImgView:UIImageView = cell.viewWithTag(4) as! UIImageView
+        
+        let tweet:NSDictionary = array![indexPath.row] as! NSDictionary
+        let userInfo:NSDictionary = tweet["user"]! as! NSDictionary
+        
+        print(tweet)
+        
+        tweetTextView.text = tweet["text"] as! String
+        userLabel.text = userInfo["name"] as? String
+        let userID = userInfo["screen_name"] as! NSString
+        userIDLabel.text = "@\(userID)"
+        let userImgPath:NSString = userInfo["profile_image_url"] as! String
+        let userImgUrl:NSURL = NSURL(string: userImgPath as String)!
+        let userImgPathData:NSData = NSData(contentsOfURL: userImgUrl)!
+        userImgView.image = UIImage(data: userImgPathData)
+        return cell
+        
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         getTimeline()
+
+        // Cell名の登録をおこなう.
+        //timelineTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        
+        // DataSourceの設定をする.
+        timelineTableView.dataSource = self
+        
+        // Delegateを設定する.
+        timelineTableView.delegate = self
     }
     
     override func didReceiveMemoryWarning() {

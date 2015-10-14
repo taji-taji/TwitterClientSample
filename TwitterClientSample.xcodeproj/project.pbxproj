@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		937609661BBCA51C007AC085 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937609651BBCA51C007AC085 /* AppDelegate.swift */; };
-		937609681BBCA51C007AC085 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937609671BBCA51C007AC085 /* ViewController.swift */; };
+		937609681BBCA51C007AC085 /* TweetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937609671BBCA51C007AC085 /* TweetViewController.swift */; };
 		9376096B1BBCA51C007AC085 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 937609691BBCA51C007AC085 /* Main.storyboard */; };
 		9376096D1BBCA51C007AC085 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9376096C1BBCA51C007AC085 /* Images.xcassets */; };
 		937609701BBCA51C007AC085 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9376096E1BBCA51C007AC085 /* LaunchScreen.xib */; };
@@ -31,7 +31,7 @@
 		937609601BBCA51C007AC085 /* TwitterClientSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterClientSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		937609641BBCA51C007AC085 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		937609651BBCA51C007AC085 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		937609671BBCA51C007AC085 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		937609671BBCA51C007AC085 /* TweetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetViewController.swift; sourceTree = "<group>"; };
 		9376096A1BBCA51C007AC085 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9376096C1BBCA51C007AC085 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		9376096F1BBCA51C007AC085 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -86,7 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				937609651BBCA51C007AC085 /* AppDelegate.swift */,
-				937609671BBCA51C007AC085 /* ViewController.swift */,
+				937609671BBCA51C007AC085 /* TweetViewController.swift */,
 				937609691BBCA51C007AC085 /* Main.storyboard */,
 				9376096C1BBCA51C007AC085 /* Images.xcassets */,
 				9376096E1BBCA51C007AC085 /* LaunchScreen.xib */,
@@ -171,6 +171,7 @@
 				TargetAttributes = {
 					9376095F1BBCA51C007AC085 = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = XP3HKSZM33;
 					};
 					937609741BBCA51C007AC085 = {
 						CreatedOnToolsVersion = 6.4;
@@ -222,7 +223,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				937609681BBCA51C007AC085 /* ViewController.swift in Sources */,
+				937609681BBCA51C007AC085 /* TweetViewController.swift in Sources */,
 				937609661BBCA51C007AC085 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -351,10 +352,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = TwitterClientSample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.engideer.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -362,10 +366,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = TwitterClientSample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.engideer.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

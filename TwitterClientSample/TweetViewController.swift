@@ -10,10 +10,10 @@ import UIKit
 import Accounts
 import Social
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class TweetViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var array:NSArray? = NSArray()
-    @IBOutlet weak var timelineTableView: UITableView!
+    @IBOutlet var timelineTableView: UITableView!
     
     /* tweet */
     @IBAction func tweet(sender: AnyObject) {
@@ -51,7 +51,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     // 引っかかり→ディクショナリの宣言
                     var params:[NSObject : AnyObject]! = [:]
                     
-                    params["count"] = "100"
+                    params["count"] = "1"
                     params["include_entities"] = "1"
                     
                     let posts:SLRequest? = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: requestMethod, URL: requestAPI, parameters: params)
@@ -86,22 +86,27 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     // セクション数の追加
-    // memo: ここ調べる
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
     // 行数を指定
-    // memo: ここ調べる
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return array!.count
     }
     
     // セルの中身を実装
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let CellIdentifier = "Cell"
-        let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier) as UITableViewCell!
+
+        print(array)
+        
+        // 上記 print(self.array) にてデータが取得されている
+        // かつ、以下 print(cell) が表示されないため
+        // let cell: ~ がうまくいっていない？
+        let cell = tableView.dequeueReusableCellWithIdentifier("TweetCell") as UITableViewCell!
+
         print(cell)
+
         let userLabel:UILabel = cell.viewWithTag(1) as! UILabel
         let userIDLabel:UILabel = cell.viewWithTag(2) as! UILabel
         let tweetTextView:UITextView = cell.viewWithTag(3) as! UITextView
@@ -133,10 +138,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         //timelineTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         
         // DataSourceの設定をする.
-        timelineTableView.dataSource = self
+        //timelineTableView.dataSource = self
         
         // Delegateを設定する.
-        timelineTableView.delegate = self
+        //timelineTableView.delegate = self
     }
     
     override func didReceiveMemoryWarning() {

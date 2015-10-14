@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Tweet View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" userLabel="View Controller" customClass="ViewController" customModule="TwitterClientSample" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" userLabel="Tweet View Controller" customClass="TweetViewController" customModule="TwitterClientSample" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="122" id="sEb-1x-2gq">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TweetCell" rowHeight="122" id="sEb-1x-2gq">
                                         <rect key="frame" x="0.0" y="86" width="375" height="122"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sEb-1x-2gq" id="XBk-9Z-eBL">
@@ -54,8 +54,8 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="vXZ-lx-hvc" id="C2e-Dv-hlh"/>
-                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="PWi-1e-vjR"/>
+                                    <outlet property="dataSource" destination="vXZ-lx-hvc" id="TIN-cd-MsD"/>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="XYe-YG-Y6f"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -74,7 +74,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="timelineTableView" destination="6RF-Ey-Mt9" id="52D-Zs-8jr"/>
+                        <outlet property="timelineTableView" destination="6RF-Ey-Mt9" id="pwx-hk-3hF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

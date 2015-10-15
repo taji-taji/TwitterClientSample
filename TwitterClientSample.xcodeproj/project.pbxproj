@@ -40,6 +40,7 @@
 		9376097B1BBCA51C007AC085 /* TwitterClientSampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterClientSampleTests.swift; sourceTree = "<group>"; };
 		937609851BBDFC0D007AC085 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		937609871BBDFC18007AC085 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		9382DFAA1BCFEBE2003C76AE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -251,6 +252,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				9376096A1BBCA51C007AC085 /* Base */,
+				9382DFAA1BCFEBE2003C76AE /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

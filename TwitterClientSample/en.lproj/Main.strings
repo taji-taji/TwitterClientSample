@@ -1,0 +1,12 @@
+
+/* Class = "UILabel"; text = "UserName"; ObjectID = "2Qs-eg-H9E"; */
+"2Qs-eg-H9E.text" = "UserName";
+
+/* Class = "UINavigationItem"; title = "Timeline"; ObjectID = "WbP-p4-Che"; */
+"WbP-p4-Che.title" = "Timeline";
+
+/* Class = "UITextView"; text = "tweet"; ObjectID = "dWh-fL-ts0"; */
+"dWh-fL-ts0.text" = "tweet";
+
+/* Class = "UILabel"; text = "@UserID"; ObjectID = "jjt-k3-VId"; */
+"jjt-k3-VId.text" = "@UserID";

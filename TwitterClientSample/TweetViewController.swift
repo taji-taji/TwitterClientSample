@@ -51,7 +51,7 @@ class TweetViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     // 引っかかり→ディクショナリの宣言
                     var params:[NSObject : AnyObject]! = [:]
                     
-                    params["count"] = "1"
+                    params["count"] = "100"
                     params["include_entities"] = "1"
                     
                     let posts:SLRequest? = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: requestMethod, URL: requestAPI, parameters: params)
@@ -103,14 +103,14 @@ class TweetViewController: UIViewController, UITableViewDelegate, UITableViewDat
         // 上記 print(self.array) にてデータが取得されている
         // かつ、以下 print(cell) が表示されないため
         // let cell: ~ がうまくいっていない？
-        let cell = tableView.dequeueReusableCellWithIdentifier("TweetCell") as UITableViewCell!
+        let cell = tableView.dequeueReusableCellWithIdentifier("TweetCell")
 
         print(cell)
 
-        let userLabel:UILabel = cell.viewWithTag(1) as! UILabel
-        let userIDLabel:UILabel = cell.viewWithTag(2) as! UILabel
-        let tweetTextView:UITextView = cell.viewWithTag(3) as! UITextView
-        let userImgView:UIImageView = cell.viewWithTag(4) as! UIImageView
+        let userLabel:UILabel = cell!.viewWithTag(1) as! UILabel
+        let userIDLabel:UILabel = cell!.viewWithTag(2) as! UILabel
+        let tweetTextView:UITextView = cell!.viewWithTag(3) as! UITextView
+        let userImgView:UIImageView = cell!.viewWithTag(4) as! UIImageView
         
         let tweet:NSDictionary = array![indexPath.row] as! NSDictionary
         let userInfo:NSDictionary = tweet["user"]! as! NSDictionary
@@ -125,7 +125,7 @@ class TweetViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let userImgUrl:NSURL = NSURL(string: userImgPath as String)!
         let userImgPathData:NSData = NSData(contentsOfURL: userImgUrl)!
         userImgView.image = UIImage(data: userImgPathData)
-        return cell
+        return cell!
         
     }
 

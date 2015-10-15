@@ -41,6 +41,7 @@
 		937609851BBDFC0D007AC085 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		937609871BBDFC18007AC085 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		9382DFAA1BCFEBE2003C76AE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		9382DFAB1BD06D36003C76AE /* 作成過程.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "作成過程.md"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +67,7 @@
 		937609571BBCA51C007AC085 = {
 			isa = PBXGroup;
 			children = (
+				9382DFAB1BD06D36003C76AE /* 作成過程.md */,
 				937609871BBDFC18007AC085 /* Accounts.framework */,
 				937609851BBDFC0D007AC085 /* Social.framework */,
 				937609621BBCA51C007AC085 /* TwitterClientSample */,
